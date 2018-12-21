@@ -23,8 +23,13 @@ public class Pile extends Observable{
 	
 	}
 	
-	public ArrayList<Integer> getPile(){
-		return pile;
+	@Override
+	public void addObserver(Observer obs){
+	
+	}
+	
+	public int peek(){
+		return 0;
 	}
 	
 	public int getSizeList(){
