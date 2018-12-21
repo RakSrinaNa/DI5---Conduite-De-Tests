@@ -35,6 +35,7 @@ class PileTest{
 	
 	@Test
 	void setChanged(){
+		//TODO
 	}
 	
 	@Test
@@ -174,5 +175,29 @@ class PileTest{
 		}
 		pile.clear();
 		assertEquals(0, pile.getSizeList());
+	}
+	
+	@ParameterizedTest
+	@ValueSource(ints = {
+			1,
+			2,
+			3,
+			15,
+			25,
+			50,
+			100,
+			1000
+	})
+	void peek(int addCount){
+		for(int i = 0; i < addCount; i++){
+			pile.push(i);
+			assertEquals(i, pile.peek());
+		}
+		assertEquals(addCount, pile.getSizeList());
+	}
+	
+	@Test
+	void peekEmpty(){
+		assertThrows(ArrayIndexOutOfBoundsException.class, () -> pile.peek());
 	}
 }
