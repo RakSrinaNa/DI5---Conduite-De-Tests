@@ -26,4 +26,9 @@ class KbdInputPileTest{
 		assertEquals(1, pile.getSizeList());
 		assertEquals(10, pile.pop());
 	}
+	
+	@Test
+	void actionCommandeInputInvalidPush(){
+		assertThrows(InvalidInput.class, () -> input.actionCommandeInput("push hello"));
+	}
 }
