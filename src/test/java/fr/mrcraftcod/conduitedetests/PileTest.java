@@ -62,8 +62,6 @@ class PileTest{
 	void notifyObserversPopEmpty(){
 		TestObserver obs = new TestObserver();
 		
-		pile.push(10);
-		
 		pile.addObserver(obs);
 		try{
 			

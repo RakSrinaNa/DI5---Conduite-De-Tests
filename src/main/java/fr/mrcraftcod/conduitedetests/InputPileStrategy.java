@@ -12,7 +12,7 @@ public abstract class InputPileStrategy{
 
 	protected final Pile pile;
 
-    protected InputPileStrategy() {
+    protected InputPileStrategy(Pile pile) {
         pile = new Pile();
     }
 
