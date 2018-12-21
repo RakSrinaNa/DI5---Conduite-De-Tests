@@ -6,7 +6,7 @@ package fr.mrcraftcod.conduitedetests;
  * @author Thomas Couchoud
  * @since 2018-12-21
  */
-public abstract class Observable implements Observer{
+public abstract class Observable {
 	abstract void setChanged();
 	
 	abstract void notifyObservers();

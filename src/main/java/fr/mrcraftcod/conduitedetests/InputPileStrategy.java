@@ -1,5 +1,7 @@
 package fr.mrcraftcod.conduitedetests;
 
+import java.util.ArrayList;
+
 /**
  * Created by Thomas Couchoud (MrCraftCod - zerderr@gmail.com) on 2018-12-21.
  *
@@ -7,19 +9,26 @@ package fr.mrcraftcod.conduitedetests;
  * @since 2018-12-21
  */
 public abstract class InputPileStrategy{
-	public void push(int entier)
+
+	protected final Pile pile;
+
+    protected InputPileStrategy() {
+        pile = new Pile();
+    }
+
+    public void push(int entier)
 	{
-	
+	    pile.push(entier);
 	}
 	
 	public int pop()
 	{
-		return 0;
+		return pile.pop();
 	}
 	
 	public void clear()
 	{
-	
+	    pile.clear();
 	}
 	
 	abstract void actionCommande();

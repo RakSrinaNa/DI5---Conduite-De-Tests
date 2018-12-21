@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class Pile extends Observable{
 	private final ArrayList<Integer> pile;
 	
-	public Pile(){pile = null;}
+	public Pile(){pile = new ArrayList<>();}
 	
 	@Override
 	void setChanged(){
@@ -23,32 +23,27 @@ public class Pile extends Observable{
 	
 	}
 	
-	@Override
-	public void update(Observable o, Object obj){
-	
-	}
-	
 	public ArrayList<Integer> getPile(){
 		return pile;
 	}
 	
 	public int getSizeList(){
-		return 0;
+		return pile.size();
 	}
 	
 	public int getEntier(int index){
-		return 0;
+		return pile.get(index);
 	}
 	
 	void push(int entier){
-	
+		pile.add(entier);
 	}
 	
 	public int pop(){
-		return 0;
+		return pile.remove(pile.size() -1);
 	}
 	
 	void clear(){
-	
+		pile.clear();
 	}
 }

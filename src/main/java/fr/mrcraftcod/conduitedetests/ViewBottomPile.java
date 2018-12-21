@@ -9,6 +9,6 @@ package fr.mrcraftcod.conduitedetests;
 public class ViewBottomPile implements Observer{
 	@Override
 	public void update(Observable o, Object obj){
-	
+		
 	}
 }
