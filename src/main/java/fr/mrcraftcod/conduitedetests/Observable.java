@@ -10,4 +10,6 @@ public abstract class Observable {
 	abstract void setChanged();
 	
 	abstract void notifyObservers();
+	
+	public abstract void addObserver(Observer obs);
 }
