@@ -17,7 +17,7 @@ class ViewBottomPileTest{
 	@BeforeEach
 	void setUp(){
 		pile = new Pile();
-		bottom = new ViewBottomPile();
+		bottom = new ViewBottomPile(System.out); //TODO bos
 		pile.addObserver(bottom);
 	}
 	

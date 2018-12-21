@@ -12,8 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  */
 public class FunctionnalKeyboardConsole{
 	@Test
-	public void test()
-	{
+	public void test() throws InvalidInput{
 		ByteArrayOutputStream bos = new ByteArrayOutputStream();
 		
 		Pile pile = new Pile();

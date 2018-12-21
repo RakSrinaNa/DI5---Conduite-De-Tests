@@ -34,7 +34,7 @@ class KbdInputPileTest{
 			100,
 			1000
 	})
-	void actionCommandeInputPush(int toAdd){
+	void actionCommandeInputPush(int toAdd) throws InvalidInput{
 		input.actionCommandeInput(String.format("push %d", toAdd));
 		assertEquals(1, pile.getSizeList());
 		assertEquals(toAdd, pile.pop());
@@ -57,9 +57,9 @@ class KbdInputPileTest{
 			100,
 			1000
 	})
-	void actionCommandeInputPop(int toAdd){
+	void actionCommandeInputPop(int toAdd) throws InvalidInput{
 		pile.push(toAdd);
-		assertEquals(toAdd, input.actionCommandeInput("pop"));
+		assertEquals((Integer)toAdd, input.actionCommandeInput("pop"));
 	}
 	
 	@Test
