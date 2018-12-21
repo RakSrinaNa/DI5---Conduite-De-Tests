@@ -13,7 +13,7 @@ public abstract class InputPileStrategy{
 	protected final Pile pile;
 
     protected InputPileStrategy(Pile pile) {
-        pile = new Pile();
+        this.pile = pile;
     }
 
     public void push(int entier)
@@ -31,5 +31,5 @@ public abstract class InputPileStrategy{
 	    pile.clear();
 	}
 	
-	abstract void actionCommande();
+	abstract Integer actionCommande() throws InvalidInput;
 }

@@ -11,27 +11,30 @@ import java.util.ArrayList;
 public class Pile extends Observable{
 	private final ArrayList<Integer> pile;
 	
-	public Pile(){pile = new ArrayList<>();}
+	public Pile(){
+		super();
+		pile = new ArrayList<>();
+	}
 	
 	@Override
 	void setChanged(){
-	
+	    //TODO
 	}
 	
 	@Override
 	void notifyObservers(){
-	
+	    observers.forEach(o -> o.update(this, null));
 	}
-	
+
 	@Override
 	public void addObserver(Observer obs){
-	
+        observers.add(obs);
 	}
-	
+
 	public int peek(){
-		return 0;
+		return pile.get(pile.size() -1);
 	}
-	
+
 	public int getSizeList(){
 		return pile.size();
 	}
@@ -42,11 +45,16 @@ public class Pile extends Observable{
 	
 	void push(int entier){
 		pile.add(entier);
+		setChanged();
+		notifyObservers();
 	}
 	
 	public int pop(){
-		return pile.remove(pile.size() -1);
-	}
+	    int i = pile.remove(pile.size() -1);
+	    setChanged();
+		notifyObservers();
+        return i;
+    }
 	
 	void clear(){
 		pile.clear();

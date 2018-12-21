@@ -7,6 +7,10 @@ package fr.mrcraftcod.conduitedetests;
  * @since 2018-12-21
  */
 public class ViewInputPile extends InputPileStrategy{
+	protected ViewInputPile(Pile pile) {
+		super(pile);
+	}
+
 	@Override
 	void actionCommande(){
 	
