@@ -12,7 +12,7 @@ public class ViewInputPile extends InputPileStrategy{
 	}
 
 	@Override
-	void actionCommande(){
-	
+	Integer actionCommande(){
+		return null;
 	}
 }
