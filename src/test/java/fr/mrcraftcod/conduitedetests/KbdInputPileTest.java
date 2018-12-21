@@ -77,4 +77,9 @@ class KbdInputPileTest{
 	void actionCommandeInputPopEmpty(){
 		assertThrows(ArrayIndexOutOfBoundsException.class, () -> input.actionCommandeInput("pop"));
 	}
+	
+	@Test
+	void actionCommandeUnknownCommand(){
+		assertThrows(ArrayIndexOutOfBoundsException.class, () -> input.actionCommandeInput("i'm invalid"));
+	}
 }
