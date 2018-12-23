@@ -1,6 +1,9 @@
 package fr.mrcraftcod.conduitedetests;
 
+import fr.mrcraftcod.conduitedetests.event.PopEvent;
+import fr.mrcraftcod.conduitedetests.event.PushEvent;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Thomas Couchoud (MrCraftCod - zerderr@gmail.com) on 2018-12-21.
@@ -9,46 +12,54 @@ import java.util.ArrayList;
  * @since 2018-12-21
  */
 public class Pile extends Observable{
-	private final ArrayList<Integer> pile;
+	private final List<Integer> pile;
 	
-	public Pile(){pile = null;}
+	public Pile(){
+		super();
+		pile = new ArrayList<>();
+	}
 	
 	@Override
 	void setChanged(){
-	
+		//TODO
 	}
 	
 	@Override
-	void notifyObservers(){
-	
+	void notifyObservers(Object obj){
+		observers.forEach(o -> o.update(this, obj));
 	}
 	
 	@Override
-	public void update(Observable o, Object obj){
-	
+	public void addObserver(Observer obs){
+		observers.add(obs);
 	}
 	
-	public ArrayList<Integer> getPile(){
-		return pile;
+	public int peek(){
+		return pile.get(pile.size() - 1);
 	}
 	
 	public int getSizeList(){
-		return 0;
+		return pile.size();
 	}
 	
 	public int getEntier(int index){
-		return 0;
+		return pile.get(index);
 	}
 	
-	void push(int entier){
-	
+	public void push(int entier){
+		pile.add(entier);
+		setChanged();
+		notifyObservers(new PushEvent(entier));
 	}
 	
 	public int pop(){
-		return 0;
+		int i = pile.remove(pile.size() - 1);
+		setChanged();
+		notifyObservers(new PopEvent(i));
+		return i;
 	}
 	
-	void clear(){
-	
+	public void clear(){
+		pile.clear();
 	}
 }

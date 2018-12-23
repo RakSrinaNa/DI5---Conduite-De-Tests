@@ -6,9 +6,12 @@ package fr.mrcraftcod.conduitedetests;
  * @author Thomas Couchoud
  * @since 2018-12-21
  */
-public class KbdInputPile extends InputPileStrategy{
-	@Override
-	void actionCommande(){
+public class InvalidInput extends Exception{
+	public InvalidInput(String message){
+		super(message);
+	}
 	
+	public InvalidInput(String message, Throwable cause){
+		super(message, cause);
 	}
 }
