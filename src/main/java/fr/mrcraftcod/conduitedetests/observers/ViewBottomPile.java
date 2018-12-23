@@ -60,4 +60,9 @@ public class ViewBottomPile implements Observer{
 	public List<Integer> getBottom(){
 		return bottom;
 	}
+	
+	public void close()
+	{
+		out.close();
+	}
 }
