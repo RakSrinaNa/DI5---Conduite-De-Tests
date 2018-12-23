@@ -1,5 +1,6 @@
 package fr.mrcraftcod.conduitedetests;
 
+import fr.mrcraftcod.conduitedetests.observers.ViewBottomPile;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -17,7 +18,7 @@ class ViewBottomPileTest{
 	@BeforeEach
 	void setUp(){
 		pile = new Pile();
-		bottom = new ViewBottomPile(System.out); //TODO bos
+		bottom = new ViewBottomPile(2, System.out); //TODO bos
 		pile.addObserver(bottom);
 	}
 	

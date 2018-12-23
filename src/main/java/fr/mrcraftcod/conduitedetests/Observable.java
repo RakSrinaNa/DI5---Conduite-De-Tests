@@ -9,18 +9,16 @@ import java.util.List;
  * @author Thomas Couchoud
  * @since 2018-12-21
  */
-public abstract class Observable {
-
+public abstract class Observable{
 	protected List<Observer> observers;
-
-
-    protected Observable() {
-        this.observers = new ArrayList<>();
-    }
-
-    abstract void setChanged();
 	
-	abstract void notifyObservers();
+	protected Observable(){
+		this.observers = new ArrayList<>();
+	}
+	
+	abstract void setChanged();
+	
+	abstract void notifyObservers(Object obj);
 	
 	public abstract void addObserver(Observer obs);
 }

@@ -1,5 +1,6 @@
 package fr.mrcraftcod.conduitedetests;
 
+import fr.mrcraftcod.conduitedetests.inputstrategy.KbdInputPile;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -80,6 +81,6 @@ class KbdInputPileTest{
 	
 	@Test
 	void actionCommandeUnknownCommand(){
-		assertThrows(ArrayIndexOutOfBoundsException.class, () -> input.actionCommandeInput("i'm invalid"));
+		assertThrows(InvalidInput.class, () -> input.actionCommandeInput("i'm invalid"));
 	}
 }
