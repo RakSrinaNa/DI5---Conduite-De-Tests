@@ -1,5 +1,7 @@
-package fr.mrcraftcod.conduitedetests;
+package fr.mrcraftcod.conduitedetests.inputstrategy;
 
+import fr.mrcraftcod.conduitedetests.InvalidInput;
+import fr.mrcraftcod.conduitedetests.Pile;
 import fr.mrcraftcod.conduitedetests.inputstrategy.KbdInputPile;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

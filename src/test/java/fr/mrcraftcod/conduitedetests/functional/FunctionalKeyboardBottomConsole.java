@@ -47,5 +47,7 @@ public class FunctionalKeyboardBottomConsole{
 		input.actionCommandeInput("pop");
 		assertEquals("popped 10, bottom stack is empty\n", bos.toString());
 		bos.reset();
+		
+		bottom.close();
 	}
 }
