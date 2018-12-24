@@ -37,6 +37,8 @@ public class KbdInputPile extends InputPileStrategy{
 				return actionPush(args);
 			case "pop":
 				return actionPop(args);
+            case "clear":
+                return actionClear(args);
 			default:
 				throw new InvalidInput("Invalid command");
 		}
@@ -52,11 +54,19 @@ public class KbdInputPile extends InputPileStrategy{
 			throw new InvalidInput(e.getMessage());
 		}
 	}
-	
-	private Integer actionPop(LinkedList<String> input) throws InvalidInput{
-		if(!input.isEmpty()){
-			throw new InvalidInput("Invalid pop");
-		}
-		return pile.pop();
-	}
+
+    private Integer actionPop(LinkedList<String> input) throws InvalidInput{
+        if(!input.isEmpty()){
+            throw new InvalidInput("Invalid pop");
+        }
+        return pile.pop();
+    }
+
+    private Integer actionClear(LinkedList<String> input) throws InvalidInput{
+        if(!input.isEmpty()){
+            throw new InvalidInput("Invalid clear");
+        }
+        pile.clear();
+        return null;
+    }
 }
