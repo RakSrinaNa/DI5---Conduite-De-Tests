@@ -63,4 +63,10 @@ class ViewBottomPileTest{
 		pile.push(6);
 		assertEquals("pushed 6, bottom stack is 2, 4\n", bos.toString());
 	}
+	
+	@Test
+	void unknownEvent(){
+		bottom.update(pile, new Object());
+		assertEquals("unknown event\n", bos.toString());
+	}
 }

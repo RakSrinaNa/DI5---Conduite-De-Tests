@@ -15,5 +15,8 @@ build:
 
 test:
   stage: test
+  only:
+    - victor
+    - master
   script:
     - mvn $MAVEN_CLI_OPTS test
