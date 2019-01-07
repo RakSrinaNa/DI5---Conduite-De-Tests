@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.util.Objects;
 
@@ -51,7 +52,7 @@ public class MainApplication extends Application{
 	}
 	
 	public Parent createContent(Stage stage){
-		HBox root = new HBox();
+		VBox root = new VBox();
 		
 		numberTable = new NumberTable(null);
 		
