@@ -78,13 +78,18 @@ class KbdInputPileTest{
 		for(int i = 0; i < toAdd; i++){
 			pile.push(i);
 		}
+		assertEquals((Integer) toAdd, input.actionCommandeInput("clear"));
 		assertTrue(pile.isEmpty());
-		assertEquals((Integer)toAdd, input.actionCommandeInput("clear"));
 	}
 	
 	@Test
-	void actionCommandeInputInvalidClear() throws InvalidInput{
+	void actionCommandeInputInvalidClear(){
 		assertThrows(InvalidInput.class, () -> input.actionCommandeInput("clear hello"));
+	}
+	
+	@Test
+	void actionCommandeInputInvalid(){
+		assertThrows(InvalidInput.class, () -> input.actionCommandeInput(null));
 	}
 	
 	@Test
