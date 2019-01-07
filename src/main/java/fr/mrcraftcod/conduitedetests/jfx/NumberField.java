@@ -53,6 +53,10 @@ public class NumberField<T> extends TextField{
 		return text.length() <= 3 && text.matches("[0-9]*");
 	}
 	
+	public void reset(){
+		this.setText("");
+	}
+	
 	/**
 	 * Get the text as an int.
 	 *

@@ -30,4 +30,8 @@ public abstract class InputPileStrategy{
     }
 	
 	abstract Integer actionCommande() throws InvalidInput;
+	
+	public Pile getPile(){
+		return pile;
+	}
 }
