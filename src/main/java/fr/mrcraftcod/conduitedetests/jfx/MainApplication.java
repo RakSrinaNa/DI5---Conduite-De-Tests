@@ -1,5 +1,6 @@
-package fr.mrcraftcod.conduitedetests.observers.jfx;
+package fr.mrcraftcod.conduitedetests.jfx;
 
+import fr.mrcraftcod.conduitedetests.observers.ViewController;
 import javafx.application.Application;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -80,6 +81,7 @@ public class MainApplication extends Application{
 		HBox buttons = new HBox();
 		buttons.getChildren().addAll(numberInput, buttonPush, buttonPop, buttonClear);
 		
+		root.getChildren().addAll(numberTable, buttons);
 		return root;
 	}
 	

@@ -3,7 +3,7 @@ package fr.mrcraftcod.conduitedetests.functional;
 import fr.mrcraftcod.conduitedetests.InvalidInput;
 import fr.mrcraftcod.conduitedetests.Pile;
 import fr.mrcraftcod.conduitedetests.inputstrategy.ViewInputPile;
-import fr.mrcraftcod.conduitedetests.observers.jfx.ViewBottomPileUI;
+import fr.mrcraftcod.conduitedetests.observers.ViewBottomPileUI;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;

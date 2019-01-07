@@ -1,7 +1,6 @@
-package fr.mrcraftcod.conduitedetests.observers.jfx;
+package fr.mrcraftcod.conduitedetests.observers;
 
 import fr.mrcraftcod.conduitedetests.Observable;
-import fr.mrcraftcod.conduitedetests.event.PushEvent;
 import fr.mrcraftcod.conduitedetests.inputstrategy.ViewInputPile;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

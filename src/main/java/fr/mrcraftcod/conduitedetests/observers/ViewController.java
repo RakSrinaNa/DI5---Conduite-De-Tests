@@ -1,4 +1,4 @@
-package fr.mrcraftcod.conduitedetests.observers.jfx;
+package fr.mrcraftcod.conduitedetests.observers;
 
 import fr.mrcraftcod.conduitedetests.Observer;
 import fr.mrcraftcod.conduitedetests.inputstrategy.ViewInputPile;
@@ -17,13 +17,13 @@ public abstract class ViewController implements Observer{
 		this.viewInputPile = viewInputPile;
 	}
 	
-	abstract void push(Integer toPush);
+	public abstract void push(Integer toPush);
 	
-	abstract Integer pop();
+	public abstract Integer pop();
 	
-	abstract int clear();
+	public abstract int clear();
 	
 	public abstract Integer peekList();
 	
-	abstract ObservableList<Integer> getList();
+	public abstract ObservableList<Integer> getList();
 }

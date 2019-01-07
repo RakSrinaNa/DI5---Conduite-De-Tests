@@ -1,4 +1,4 @@
-package fr.mrcraftcod.conduitedetests.observers.jfx;
+package fr.mrcraftcod.conduitedetests.jfx;
 
 import com.sun.javafx.scene.control.skin.TableHeaderRow;
 import javafx.beans.property.SimpleIntegerProperty;

@@ -1,4 +1,4 @@
-package fr.mrcraftcod.conduitedetests.observers.jfx;
+package fr.mrcraftcod.conduitedetests.jfx;
 
 import javafx.scene.control.TextField;
 import java.util.Objects;
