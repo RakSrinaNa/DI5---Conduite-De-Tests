@@ -39,7 +39,7 @@ public class Pile extends Observable{
 	}
 	
 	public boolean isEmpty(){
-		return false;
+		return pile.isEmpty();
 	}
 	
 	public int getSizeList(){
