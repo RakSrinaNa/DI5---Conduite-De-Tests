@@ -15,8 +15,8 @@ public class ViewBottomPileUI extends ViewController{
 
 	protected ObservableList<Integer> list;
 	protected int maxSize;
-
-	public ViewBottomPileUI(ViewInputPile viewInputPile, int i){
+	
+	public ViewBottomPileUI(ViewInputPile viewInputPile, Integer i){
 		super(viewInputPile);
 		list = FXCollections.emptyObservableList();
 		maxSize = i;

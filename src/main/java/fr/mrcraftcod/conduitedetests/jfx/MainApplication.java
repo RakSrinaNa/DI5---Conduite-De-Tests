@@ -1,5 +1,7 @@
 package fr.mrcraftcod.conduitedetests.jfx;
 
+import fr.mrcraftcod.conduitedetests.Pile;
+import fr.mrcraftcod.conduitedetests.inputstrategy.ViewInputPile;
 import fr.mrcraftcod.conduitedetests.observers.ViewController;
 import javafx.application.Application;
 import javafx.scene.Parent;
@@ -7,7 +9,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import java.lang.reflect.Constructor;
 import java.util.Objects;
 
 /**
@@ -21,7 +25,31 @@ public class MainApplication extends Application{
 	private ViewController controller;
 	private NumberTable numberTable;
 	
+	public static void main(String[] args){
+		Application.launch(MainApplication.class, args);
+	}
+	
 	public void start(Stage stage){
+		try{
+			String controllerClass = this.getParameters().getNamed().get("observer");
+			Class klass = Class.forName(controllerClass);
+			if(!klass.getSuperclass().equals(ViewController.class)){
+				System.exit(1);
+			}
+			
+			Class<ViewController> kklass = (Class<ViewController>) klass;
+			
+			Pile pile = new Pile();
+			ViewInputPile viewInputPile = new ViewInputPile(pile);
+			
+			Constructor<ViewController> constructor = kklass.getConstructor(ViewInputPile.class, Integer.class);
+			this.controller = constructor.newInstance(viewInputPile, 2);
+			pile.addObserver(this.controller);
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			System.exit(1);
+		}
 		this.stage = stage;
 		Scene scene = buildScene(stage);
 		stage.setTitle(this.getFrameTitle());
@@ -51,9 +79,9 @@ public class MainApplication extends Application{
 	}
 	
 	public Parent createContent(Stage stage){
-		HBox root = new HBox();
+		VBox root = new VBox();
 		
-		numberTable = new NumberTable(null);
+		numberTable = new NumberTable(controller.getList());
 		
 		NumberField<Integer> numberInput = new NumberField<>();
 		
@@ -83,11 +111,6 @@ public class MainApplication extends Application{
 		
 		root.getChildren().addAll(numberTable, buttons);
 		return root;
-	}
-	
-	public void attachController(ViewController controller){
-		this.controller = controller;
-		this.numberTable.setItems(controller.getList());
 	}
 	
 	public Stage getStage(){
