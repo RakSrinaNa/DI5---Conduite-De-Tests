@@ -65,4 +65,10 @@ class ViewTopPileTest{
 		pile.pop();
 		assertEquals("popped 2, top stack is empty\n", bos.toString());
 	}
+	
+	@Test
+	void unknownEvent(){
+		top.update(pile, new Object());
+		assertEquals("unknown event\n", bos.toString());
+	}
 }
