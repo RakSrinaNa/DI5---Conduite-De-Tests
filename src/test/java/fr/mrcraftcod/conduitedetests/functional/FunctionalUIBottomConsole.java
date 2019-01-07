@@ -31,7 +31,7 @@ public class FunctionalUIBottomConsole{
 		assertEquals((Integer) 100, controller.peekList());
 		
 		controller.push(1000);
-		assertEquals(3, controller.getList().size());
+		assertEquals(2, controller.getList().size());
 		assertEquals((Integer) 100, controller.peekList());
 		
 		controller.pop();

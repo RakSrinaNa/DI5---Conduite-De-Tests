@@ -5,6 +5,8 @@ import fr.mrcraftcod.conduitedetests.inputstrategy.ViewInputPile;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.util.LinkedList;
+
 /**
  * Created by Thomas Couchoud (MrCraftCod - zerderr@gmail.com) on 2019-01-07.
  *
@@ -18,7 +20,7 @@ public class ViewBottomPileUI extends ViewController{
 	
 	public ViewBottomPileUI(ViewInputPile viewInputPile, Integer i){
 		super(viewInputPile);
-		list = FXCollections.emptyObservableList();
+		list = FXCollections.observableList(new LinkedList<>());
 		maxSize = i;
 	}
 	
@@ -26,12 +28,12 @@ public class ViewBottomPileUI extends ViewController{
 	public void push(Integer toPush){
 		viewInputPile.push(toPush);
 		if(list.size() < maxSize)
-			list.add(toPush);
+			list.add(0, toPush);
 	}
 	
 	@Override
 	public Integer pop(){
-		if(!list.isEmpty())
+		if(!list.isEmpty() && viewInputPile.getPile().getSizeList() <= maxSize)
 			list.remove(0);
 		return viewInputPile.pop();
 	}
