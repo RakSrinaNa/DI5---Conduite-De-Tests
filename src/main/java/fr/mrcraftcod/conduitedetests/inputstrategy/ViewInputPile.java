@@ -9,7 +9,7 @@ import fr.mrcraftcod.conduitedetests.Pile;
  * @since 2018-12-21
  */
 public class ViewInputPile extends InputPileStrategy{
-	protected ViewInputPile(Pile pile){
+	public ViewInputPile(Pile pile){
 		super(pile);
 	}
 	
