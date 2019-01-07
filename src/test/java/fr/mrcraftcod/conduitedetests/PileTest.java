@@ -23,7 +23,7 @@ class PileTest{
 			gotUpdated = true;
 		}
 		
-		public boolean isGotUpdated(){
+		boolean isGotUpdated(){
 			return gotUpdated;
 		}
 	}
