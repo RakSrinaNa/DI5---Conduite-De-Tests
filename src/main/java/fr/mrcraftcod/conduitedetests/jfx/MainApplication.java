@@ -12,7 +12,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.lang.reflect.Constructor;
-import java.util.Objects;
 
 /**
  * Created by Thomas Couchoud (MrCraftCod - zerderr@gmail.com) on 2019-01-07.
@@ -87,23 +86,20 @@ public class MainApplication extends Application{
 		
 		Button buttonPush = new Button("Push");
 		buttonPush.setOnAction(evt -> {
-			if(Objects.nonNull(controller)){
-				controller.push(numberInput.getInt());
-			}
+			controller.push(numberInput.getInt());
+			numberInput.reset();
 		});
 		
 		Button buttonPop = new Button("Pop");
 		buttonPop.setOnAction(evt -> {
-			if(Objects.nonNull(controller)){
-				controller.pop();
-			}
+			controller.pop();
+			numberInput.reset();
 		});
 		
 		Button buttonClear = new Button("Clear");
 		buttonClear.setOnAction(evt -> {
-			if(Objects.nonNull(controller)){
-				controller.clear();
-			}
+			controller.clear();
+			numberInput.reset();
 		});
 		
 		HBox buttons = new HBox();
