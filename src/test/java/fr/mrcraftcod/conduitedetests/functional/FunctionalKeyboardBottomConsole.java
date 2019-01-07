@@ -25,27 +25,27 @@ public class FunctionalKeyboardBottomConsole{
 		pile.addObserver(bottom);
 		
 		input.actionCommandeInput("push 10");
-		assertEquals("pushed 10, bottom stack is 10\n", bos.toString());
+		assertEquals("pushed 10, bottom stack is 10" + System.getProperty("line.separator"), bos.toString());
 		bos.reset();
 		
 		input.actionCommandeInput("push 100");
-		assertEquals("pushed 100, bottom stack is 10, 100\n", bos.toString());
+		assertEquals("pushed 100, bottom stack is 10, 100" + System.getProperty("line.separator"), bos.toString());
 		bos.reset();
 		
 		input.actionCommandeInput("push 1000");
-		assertEquals("pushed 1000, bottom stack is 10, 100\n", bos.toString());
+		assertEquals("pushed 1000, bottom stack is 10, 100" + System.getProperty("line.separator"), bos.toString());
 		bos.reset();
 		
 		input.actionCommandeInput("pop");
-		assertEquals("popped 1000, bottom stack is 10, 100\n", bos.toString());
+		assertEquals("popped 1000, bottom stack is 10, 100" + System.getProperty("line.separator"), bos.toString());
 		bos.reset();
 		
 		input.actionCommandeInput("pop");
-		assertEquals("popped 100, bottom stack is 10\n", bos.toString());
+		assertEquals("popped 100, bottom stack is 10" + System.getProperty("line.separator"), bos.toString());
 		bos.reset();
 		
 		input.actionCommandeInput("pop");
-		assertEquals("popped 10, bottom stack is empty\n", bos.toString());
+		assertEquals("popped 10, bottom stack is empty" + System.getProperty("line.separator"), bos.toString());
 		bos.reset();
 		
 		bottom.close();
