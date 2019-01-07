@@ -25,15 +25,20 @@ public class ViewBottomPileUI extends ViewController{
 	@Override
 	public void push(Integer toPush){
 		viewInputPile.push(toPush);
+		if(list.size() < maxSize)
+			list.add(toPush);
 	}
 	
 	@Override
 	public Integer pop(){
+		if(!list.isEmpty())
+			list.remove(0);
 		return viewInputPile.pop();
 	}
 	
 	@Override
 	public int clear(){
+		list.clear();
 		return viewInputPile.clear();
 	}
 	
