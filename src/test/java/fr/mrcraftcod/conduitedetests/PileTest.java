@@ -149,6 +149,7 @@ class PileTest{
 			assertEquals(i, pile.pop());
 		}
 		assertEquals(0, pile.getSizeList());
+		assertTrue(pile.isEmpty());
 	}
 	
 	@Test
@@ -173,6 +174,7 @@ class PileTest{
 		}
 		pile.clear();
 		assertEquals(0, pile.getSizeList());
+		assertTrue(pile.isEmpty());
 	}
 	
 	@ParameterizedTest
