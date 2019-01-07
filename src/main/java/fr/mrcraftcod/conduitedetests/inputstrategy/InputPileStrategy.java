@@ -17,17 +17,17 @@ public abstract class InputPileStrategy{
 		this.pile = pile;
 	}
 	
-	public void push(int entier){
+	protected void push(int entier){
 		pile.push(entier);
 	}
 	
-	public int pop(){
+	protected int pop(){
 		return pile.pop();
 	}
 	
-	public void clear(){
-		pile.clear();
-	}
+	protected int clear(){
+		return pile.clear();
+    }
 	
 	abstract Integer actionCommande() throws InvalidInput;
 }

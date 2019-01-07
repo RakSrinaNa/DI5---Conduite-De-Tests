@@ -1,7 +1,9 @@
 package fr.mrcraftcod.conduitedetests.observers.jfx;
 
 import fr.mrcraftcod.conduitedetests.Observable;
+import fr.mrcraftcod.conduitedetests.event.PushEvent;
 import fr.mrcraftcod.conduitedetests.inputstrategy.ViewInputPile;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 /**
@@ -11,37 +13,45 @@ import javafx.collections.ObservableList;
  * @since 2019-01-07
  */
 public class ViewBottomPileUI extends ViewController{
+
+	protected ObservableList<Integer> list;
+	protected int maxSize;
+
 	public ViewBottomPileUI(ViewInputPile viewInputPile, int i){
 		super(viewInputPile);
+		list = FXCollections.emptyObservableList();
+		maxSize = i;
 	}
 	
 	@Override
-	void push(Integer toPush){
-	
+	public void push(Integer toPush){
+		viewInputPile.push(toPush);
 	}
 	
 	@Override
-	Integer pop(){
-		return null;
+	public Integer pop(){
+		return viewInputPile.pop();
 	}
 	
 	@Override
-	int clear(){
-		return 0;
+	public int clear(){
+		return viewInputPile.clear();
 	}
 	
 	@Override
 	public Integer peekList(){
-		return null;
+		if(list.isEmpty())
+			return null;
+		return list.get(0);
 	}
 	
 	@Override
 	public ObservableList<Integer> getList(){
-		return null;
+		return list;
 	}
 	
 	@Override
 	public void update(Observable o, Object obj){
-	
+
 	}
 }

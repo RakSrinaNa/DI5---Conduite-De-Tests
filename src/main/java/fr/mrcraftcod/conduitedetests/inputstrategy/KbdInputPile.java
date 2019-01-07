@@ -47,7 +47,7 @@ public class KbdInputPile extends InputPileStrategy{
 	private Integer actionPush(LinkedList<String> input) throws InvalidInput{
 		try{
 			int i = Integer.parseInt(input.pop());
-			pile.push(i);
+			super.push(i);
 			return null;
 		}
 		catch(Exception e){
@@ -59,14 +59,13 @@ public class KbdInputPile extends InputPileStrategy{
         if(!input.isEmpty()){
             throw new InvalidInput("Invalid pop");
         }
-        return pile.pop();
+        return super.pop();
     }
 
     private Integer actionClear(LinkedList<String> input) throws InvalidInput{
         if(!input.isEmpty()){
             throw new InvalidInput("Invalid clear");
         }
-        pile.clear();
-        return null;
+        return super.clear();
     }
 }

@@ -17,4 +17,19 @@ public class ViewInputPile extends InputPileStrategy{
 	Integer actionCommande(){
 		return null;
 	}
+
+	@Override
+	public void push(int toPush) {
+		super.push(toPush);
+	}
+
+	@Override
+	public int pop() {
+		return super.pop();
+	}
+
+	@Override
+	public int clear() {
+		return super.clear();
+	}
 }

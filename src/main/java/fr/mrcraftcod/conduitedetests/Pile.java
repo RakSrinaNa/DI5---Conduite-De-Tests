@@ -63,7 +63,9 @@ public class Pile extends Observable{
 		return i;
 	}
 	
-	public void clear(){
+	public int clear(){
+		int n = pile.size();
 		pile.clear();
+		return n;
 	}
 }

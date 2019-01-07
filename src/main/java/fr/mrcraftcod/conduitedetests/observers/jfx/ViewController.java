@@ -11,7 +11,7 @@ import javafx.collections.ObservableList;
  * @since 2019-01-07
  */
 public abstract class ViewController implements Observer{
-	private final ViewInputPile viewInputPile;
+	protected final ViewInputPile viewInputPile;
 	
 	public ViewController(ViewInputPile viewInputPile){
 		this.viewInputPile = viewInputPile;
