@@ -38,7 +38,7 @@ class ViewTopPileTest{
 		pile.push(2);
 		bos.reset();
 		pile.pop();
-		assertEquals("popped 2, top stack is 2\n", bos.toString());
+		assertEquals("popped 2, top stack is 2" + System.getProperty("line.separator"), bos.toString());
 	}
 	
 	@Test
@@ -49,13 +49,13 @@ class ViewTopPileTest{
 		pile.push(8);
 		bos.reset();
 		pile.pop();
-		assertEquals("popped 8, top stack is 4, 6\n", bos.toString());
+		assertEquals("popped 8, top stack is 4, 6" + System.getProperty("line.separator"), bos.toString());
 		bos.reset();
 		pile.pop();
-		assertEquals("popped 6, top stack is 2, 4\n", bos.toString());
+		assertEquals("popped 6, top stack is 2, 4" + System.getProperty("line.separator"), bos.toString());
 		bos.reset();
 		pile.pop();
-		assertEquals("popped 4, top stack is 2\n", bos.toString());
+		assertEquals("popped 4, top stack is 2" + System.getProperty("line.separator"), bos.toString());
 	}
 	
 	@Test
@@ -63,12 +63,12 @@ class ViewTopPileTest{
 		pile.push(2);
 		bos.reset();
 		pile.pop();
-		assertEquals("popped 2, top stack is empty\n", bos.toString());
+		assertEquals("popped 2, top stack is empty" + System.getProperty("line.separator"), bos.toString());
 	}
 	
 	@Test
 	void unknownEvent(){
 		top.update(pile, new Object());
-		assertEquals("unknown event\n", bos.toString());
+		assertEquals("unknown event" + System.getProperty("line.separator"), bos.toString());
 	}
 }

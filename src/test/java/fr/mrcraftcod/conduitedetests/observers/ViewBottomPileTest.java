@@ -43,7 +43,7 @@ class ViewBottomPileTest{
 	@ValueSource(ints = {1, 2, 5, 10, 1000})
 	void push(int value){
 		pile.push(value);
-		assertEquals(String.format("pushed %d, bottom stack is %d\n", value, value), bos.toString());
+		assertEquals(String.format("pushed %d, bottom stack is %d" + System.getProperty("line.separator"), value, value), bos.toString());
 	}
 	
 	@Test
@@ -51,7 +51,7 @@ class ViewBottomPileTest{
 		pile.push(2);
 		bos.reset();
 		pile.push(4);
-		assertEquals("pushed 4, bottom stack is 2, 4\n", bos.toString());
+		assertEquals("pushed 4, bottom stack is 2, 4" + System.getProperty("line.separator"), bos.toString());
 	}
 	
 	@Test
@@ -61,12 +61,12 @@ class ViewBottomPileTest{
 		pile.push(4);
 		bos.reset();
 		pile.push(6);
-		assertEquals("pushed 6, bottom stack is 2, 4\n", bos.toString());
+		assertEquals("pushed 6, bottom stack is 2, 4" + System.getProperty("line.separator"), bos.toString());
 	}
 	
 	@Test
 	void unknownEvent(){
 		bottom.update(pile, new Object());
-		assertEquals("unknown event\n", bos.toString());
+		assertEquals("unknown event" + System.getProperty("line.separator"), bos.toString());
 	}
 }
