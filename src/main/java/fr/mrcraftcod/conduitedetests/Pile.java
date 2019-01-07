@@ -38,6 +38,10 @@ public class Pile extends Observable{
 		return pile.get(pile.size() - 1);
 	}
 	
+	public boolean isEmpty(){
+		return false;
+	}
+	
 	public int getSizeList(){
 		return pile.size();
 	}

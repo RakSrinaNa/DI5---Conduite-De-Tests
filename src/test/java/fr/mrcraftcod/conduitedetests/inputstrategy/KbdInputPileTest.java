@@ -2,13 +2,11 @@ package fr.mrcraftcod.conduitedetests.inputstrategy;
 
 import fr.mrcraftcod.conduitedetests.InvalidInput;
 import fr.mrcraftcod.conduitedetests.Pile;
-import fr.mrcraftcod.conduitedetests.inputstrategy.KbdInputPile;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Created by Thomas Couchoud (MrCraftCod - zerderr@gmail.com) on 2018-12-21.
@@ -62,7 +60,31 @@ class KbdInputPileTest{
 	})
 	void actionCommandeInputPop(int toAdd) throws InvalidInput{
 		pile.push(toAdd);
-		assertEquals((Integer)toAdd, input.actionCommandeInput("pop"));
+		assertEquals((Integer) toAdd, input.actionCommandeInput("pop"));
+	}
+	
+	@ParameterizedTest
+	@ValueSource(ints = {
+			1,
+			2,
+			3,
+			15,
+			25,
+			50,
+			100,
+			1000
+	})
+	void actionCommandeInputClear(int toAdd) throws InvalidInput{
+		for(int i = 0; i < toAdd; i++){
+			pile.push(i);
+		}
+		assertTrue(pile.isEmpty());
+		assertEquals((Integer)toAdd, input.actionCommandeInput("clear"));
+	}
+	
+	@Test
+	void actionCommandeInputInvalidClear() throws InvalidInput{
+		assertThrows(InvalidInput.class, () -> input.actionCommandeInput("clear hello"));
 	}
 	
 	@Test
