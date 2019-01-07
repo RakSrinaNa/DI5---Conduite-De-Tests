@@ -19,31 +19,31 @@ public class FunctionalUIBottomConsole{
 	public void test() throws InvalidInput{
 		Pile pile = new Pile();
 		ViewInputPile input = new ViewInputPile(pile);
-		ViewBottomPileUI bottom = new ViewBottomPileUI(input, 2);
-		pile.addObserver(bottom);
+		ViewBottomPileUI controller = new ViewBottomPileUI(input, 2);
+		pile.addObserver(controller);
 		
-		input.push(10);
-		assertEquals(1, bottom.getList().size());
-		assertEquals((Integer) 10, bottom.peekList());
+		controller.push(10);
+		assertEquals(1, controller.getList().size());
+		assertEquals((Integer) 10, controller.peekList());
 		
-		input.push(100);
-		assertEquals(2, bottom.getList().size());
-		assertEquals((Integer) 100, bottom.peekList());
+		controller.push(100);
+		assertEquals(2, controller.getList().size());
+		assertEquals((Integer) 100, controller.peekList());
 		
-		input.push(1000);
-		assertEquals(3, bottom.getList().size());
-		assertEquals((Integer) 100, bottom.peekList());
+		controller.push(1000);
+		assertEquals(3, controller.getList().size());
+		assertEquals((Integer) 100, controller.peekList());
 		
-		input.pop();
-		assertEquals(2, bottom.getList().size());
-		assertEquals((Integer) 100, bottom.peekList());
+		controller.pop();
+		assertEquals(2, controller.getList().size());
+		assertEquals((Integer) 100, controller.peekList());
 		
-		input.pop();
-		assertEquals(1, bottom.getList().size());
-		assertEquals((Integer) 10, bottom.peekList());
+		controller.pop();
+		assertEquals(1, controller.getList().size());
+		assertEquals((Integer) 10, controller.peekList());
 		
-		input.pop();
-		assertEquals(0, bottom.getList().size());
-		assertNull(bottom.peekList());
+		controller.pop();
+		assertEquals(0, controller.getList().size());
+		assertNull(controller.peekList());
 	}
 }
