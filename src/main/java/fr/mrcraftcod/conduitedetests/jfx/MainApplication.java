@@ -14,6 +14,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.lang.reflect.Constructor;
+import java.util.Optional;
 
 /**
  * Created by Thomas Couchoud (MrCraftCod - zerderr@gmail.com) on 2019-01-07.
@@ -44,7 +45,7 @@ public class MainApplication extends Application{
 			ViewInputPile viewInputPile = new ViewInputPile(pile);
 			
 			Constructor<ViewController> constructor = kklass.getConstructor(ViewInputPile.class, Integer.class);
-			this.controller = constructor.newInstance(viewInputPile, 2);
+			this.controller = constructor.newInstance(viewInputPile, Optional.ofNullable(this.getParameters().getNamed().get("limit")).map(Integer::parseInt).orElse(2));
 			pile.addObserver(this.controller);
 		}
 		catch(Exception e){
