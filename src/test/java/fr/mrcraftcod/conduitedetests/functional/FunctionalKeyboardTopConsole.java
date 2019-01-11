@@ -48,6 +48,18 @@ public class FunctionalKeyboardTopConsole{
 		assertEquals("popped 10, top stack is empty" + System.getProperty("line.separator"), bos.toString());
 		bos.reset();
 		
+		input.actionCommandeInput("clear");
+		assertEquals("cleared 0 elements" + System.getProperty("line.separator"), bos.toString());
+		bos.reset();
+		
+		input.actionCommandeInput("push 10");
+		input.actionCommandeInput("push 10");
+		input.actionCommandeInput("push 10");
+		bos.reset();
+		input.actionCommandeInput("clear");
+		assertEquals("cleared 3 elements" + System.getProperty("line.separator"), bos.toString());
+		bos.reset();
+		
 		top.close();
 	}
 }

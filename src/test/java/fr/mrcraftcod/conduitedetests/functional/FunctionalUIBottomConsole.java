@@ -50,5 +50,16 @@ public class FunctionalUIBottomConsole{
 		controller.pop();
 		assertEquals(0, controller.getList().size());
 		assertNull(controller.peekList());
+		
+		controller.clear();
+		assertEquals(0, controller.getList().size());
+		assertNull(controller.peekList());
+		
+		controller.push(10);
+		controller.push(100);
+		controller.push(1000);
+		controller.clear();
+		assertEquals(0, controller.getList().size());
+		assertNull(controller.peekList());
 	}
 }

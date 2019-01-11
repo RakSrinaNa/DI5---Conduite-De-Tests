@@ -6,8 +6,10 @@ import fr.mrcraftcod.conduitedetests.observers.ViewController;
 import javafx.application.Application;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -89,10 +91,24 @@ public class MainApplication extends Application{
 			controller.push(numberInput.getInt());
 			numberInput.reset();
 		});
+		numberInput.setOnKeyPressed((event) -> {
+			if(event.getCode() == KeyCode.ENTER){
+				buttonPush.fire();
+			}
+		});
 		
 		Button buttonPop = new Button("Pop");
 		buttonPop.setOnAction(evt -> {
-			controller.pop();
+			try{
+				controller.pop();
+			}
+			catch(ArrayIndexOutOfBoundsException e){
+				Alert alert = new Alert(Alert.AlertType.ERROR);
+				alert.setTitle("Error popping");
+				alert.setHeaderText("You should be more careful");
+				alert.setContentText("You can't pop a list that is empty!");
+				alert.showAndWait();
+			}
 			numberInput.reset();
 		});
 		
