@@ -5,8 +5,7 @@ import fr.mrcraftcod.conduitedetests.Pile;
 import fr.mrcraftcod.conduitedetests.inputstrategy.ViewInputPile;
 import fr.mrcraftcod.conduitedetests.observers.ViewBottomPileUI;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Created by Thomas Couchoud (MrCraftCod - zerderr@gmail.com) on 2018-12-21.
@@ -29,18 +28,25 @@ public class FunctionalUIBottomConsole{
 		controller.push(100);
 		assertEquals(2, controller.getList().size());
 		assertEquals((Integer) 100, controller.peekList());
+		assertTrue(controller.getList().contains(10));
+		assertTrue(controller.getList().contains(100));
 		
 		controller.push(1000);
-		assertEquals(3, controller.getList().size());
+		assertEquals(2, controller.getList().size());
 		assertEquals((Integer) 100, controller.peekList());
+		assertTrue(controller.getList().contains(10));
+		assertTrue(controller.getList().contains(100));
 		
 		controller.pop();
 		assertEquals(2, controller.getList().size());
 		assertEquals((Integer) 100, controller.peekList());
+		assertTrue(controller.getList().contains(10));
+		assertTrue(controller.getList().contains(100));
 		
 		controller.pop();
 		assertEquals(1, controller.getList().size());
 		assertEquals((Integer) 10, controller.peekList());
+		assertTrue(controller.getList().contains(10));
 		
 		controller.pop();
 		assertEquals(0, controller.getList().size());
