@@ -22,7 +22,7 @@ public abstract class InputPileStrategy{
 	}
 	
 	protected int pop(){
-		return pile.pop();
+        return pile.pop();
 	}
 	
 	protected int clear(){

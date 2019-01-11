@@ -3,6 +3,7 @@ package fr.mrcraftcod.conduitedetests.observers;
 import fr.mrcraftcod.conduitedetests.Observable;
 import fr.mrcraftcod.conduitedetests.Observer;
 import fr.mrcraftcod.conduitedetests.Pile;
+import fr.mrcraftcod.conduitedetests.event.ClearEvent;
 import fr.mrcraftcod.conduitedetests.event.PopEvent;
 import fr.mrcraftcod.conduitedetests.event.PushEvent;
 import org.jetbrains.annotations.NotNull;
@@ -34,6 +35,9 @@ public class ViewTopPile implements Observer{
 			}
 			else if(obj instanceof PushEvent){
 				out.println(String.format("pushed %d, top stack is %s", ((PushEvent) obj).getValue(), getTopAsString((Pile)o)));
+			}
+			else if(obj instanceof ClearEvent){
+				out.println(String.format("cleared %d elements", ((ClearEvent) obj).getValue()));
 			}
 			else{
 				out.println("unknown event");

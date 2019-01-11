@@ -1,9 +1,15 @@
 package fr.mrcraftcod.conduitedetests.observers;
 
 import fr.mrcraftcod.conduitedetests.Observable;
+import fr.mrcraftcod.conduitedetests.Pile;
+import fr.mrcraftcod.conduitedetests.event.ClearEvent;
+import fr.mrcraftcod.conduitedetests.event.PopEvent;
+import fr.mrcraftcod.conduitedetests.event.PushEvent;
 import fr.mrcraftcod.conduitedetests.inputstrategy.ViewInputPile;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
+import java.util.LinkedList;
 
 /**
  * Created by Thomas Couchoud (MrCraftCod - zerderr@gmail.com) on 2019-01-07.
@@ -18,7 +24,7 @@ public class ViewBottomPileUI extends ViewController{
 	
 	public ViewBottomPileUI(ViewInputPile viewInputPile, Integer i){
 		super(viewInputPile);
-		list = FXCollections.emptyObservableList();
+		list = FXCollections.observableList(new LinkedList<>());
 		maxSize = i;
 	}
 	
@@ -28,7 +34,7 @@ public class ViewBottomPileUI extends ViewController{
 	}
 	
 	@Override
-	public Integer pop(){
+	public int pop(){
 		return viewInputPile.pop();
 	}
 	
@@ -51,6 +57,19 @@ public class ViewBottomPileUI extends ViewController{
 	
 	@Override
 	public void update(Observable o, Object obj){
-
+		if(o instanceof Pile){
+			if(obj instanceof PopEvent){
+				if (!list.isEmpty() && viewInputPile.getPile().getSizeList() < maxSize) {
+                    list.remove(0);
+                }
+            }
+			else if(obj instanceof PushEvent){
+				if(list.size() < maxSize)
+					list.add(0, ((PushEvent) obj).getValue());
+			}
+			else if(obj instanceof ClearEvent){
+				list.clear();
+			}
+		}
 	}
 }
