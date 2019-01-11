@@ -1,5 +1,6 @@
 package fr.mrcraftcod.conduitedetests;
 
+import fr.mrcraftcod.conduitedetests.event.ClearEvent;
 import fr.mrcraftcod.conduitedetests.event.PopEvent;
 import fr.mrcraftcod.conduitedetests.event.PushEvent;
 import java.util.ArrayList;
@@ -66,6 +67,7 @@ public class Pile extends Observable{
 	public int clear(){
 		int n = pile.size();
 		pile.clear();
+		notifyObservers(new ClearEvent(n));
 		return n;
 	}
 }
