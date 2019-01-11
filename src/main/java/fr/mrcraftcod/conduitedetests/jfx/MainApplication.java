@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -88,6 +89,11 @@ public class MainApplication extends Application{
 		buttonPush.setOnAction(evt -> {
 			controller.push(numberInput.getInt());
 			numberInput.reset();
+		});
+		numberInput.setOnKeyPressed((event) -> {
+			if(event.getCode() == KeyCode.ENTER){
+				buttonPush.fire();
+			}
 		});
 		
 		Button buttonPop = new Button("Pop");
