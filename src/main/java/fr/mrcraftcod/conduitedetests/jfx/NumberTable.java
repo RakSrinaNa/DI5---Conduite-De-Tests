@@ -1,6 +1,5 @@
 package fr.mrcraftcod.conduitedetests.jfx;
 
-import com.sun.javafx.scene.control.skin.TableHeaderRow;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
@@ -28,10 +27,6 @@ public class NumberTable extends TableView<Integer>{
 		
 		//noinspection unchecked
 		getColumns().addAll(columnID);
-		skinProperty().addListener((obs, oldSkin, newSkin) -> {
-			final TableHeaderRow header = (TableHeaderRow) lookup("TableHeaderRow");
-			header.reorderingProperty().addListener((o, oldVal, newVal) -> header.setReordering(false));
-		});
 		
 		this.setItems(data);
 	}

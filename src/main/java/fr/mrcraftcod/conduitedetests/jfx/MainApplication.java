@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.lang.reflect.Constructor;
@@ -86,6 +87,7 @@ public class MainApplication extends Application{
 		numberTable = new NumberTable(controller.getList());
 		
 		NumberField<Integer> numberInput = new NumberField<>();
+		numberInput.setMaxWidth(Double.MAX_VALUE);
 		
 		Button buttonPush = new Button("Push");
 		buttonPush.setOnAction(evt -> {
@@ -122,6 +124,8 @@ public class MainApplication extends Application{
 		HBox buttons = new HBox();
 		buttons.getChildren().addAll(numberInput, buttonPush, buttonPop, buttonClear);
 		
+		VBox.setVgrow(numberTable, Priority.ALWAYS);
+		HBox.setHgrow(numberInput, Priority.ALWAYS);
 		root.getChildren().addAll(numberTable, buttons);
 		return root;
 	}
