@@ -1,0 +1,28 @@
+image: maven:3.6.0-jdk-8-slim
+
+variables:
+  MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
+
+cache:
+  paths:
+    - .m2/repository/
+    - target/
+
+build:
+  stage: build
+  before_script:
+    - apt-get update
+    - apt-get install -y openjfx
+  script:
+    - mvn $MAVEN_CLI_OPTS compile
+
+test:
+  stage: test
+  only:
+    - victor
+    - master
+  before_script:
+    - apt-get update
+    - apt-get install -y openjfx
+  script:
+    - mvn $MAVEN_CLI_OPTS test
