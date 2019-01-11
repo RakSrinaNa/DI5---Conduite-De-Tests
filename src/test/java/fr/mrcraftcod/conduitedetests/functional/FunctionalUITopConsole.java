@@ -2,7 +2,7 @@ package fr.mrcraftcod.conduitedetests.functional;
 
 import fr.mrcraftcod.conduitedetests.Pile;
 import fr.mrcraftcod.conduitedetests.inputstrategy.ViewInputPile;
-import fr.mrcraftcod.conduitedetests.observers.ViewBottomPileUI;
+import fr.mrcraftcod.conduitedetests.observers.ViewTopPileUI;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -12,12 +12,12 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author Thomas Couchoud
  * @since 2018-12-21
  */
-public class FunctionalUIBottomConsole{
+public class FunctionalUITopConsole{
 	@Test
 	public void test(){
 		Pile pile = new Pile();
 		ViewInputPile input = new ViewInputPile(pile);
-		ViewBottomPileUI controller = new ViewBottomPileUI(input, 2);
+		ViewTopPileUI controller = new ViewTopPileUI(input, 2);
 		pile.addObserver(controller);
 		
 		controller.push(10);
@@ -32,9 +32,9 @@ public class FunctionalUIBottomConsole{
 		
 		controller.push(1000);
 		assertEquals(2, controller.getList().size());
-		assertEquals((Integer) 100, controller.peekList());
-		assertTrue(controller.getList().contains(10));
+		assertEquals((Integer) 1000, controller.peekList());
 		assertTrue(controller.getList().contains(100));
+		assertTrue(controller.getList().contains(1000));
 		
 		controller.pop();
 		assertEquals(2, controller.getList().size());
