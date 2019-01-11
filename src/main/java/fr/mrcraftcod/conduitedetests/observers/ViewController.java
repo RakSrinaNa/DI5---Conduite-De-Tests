@@ -19,7 +19,7 @@ public abstract class ViewController implements Observer{
 	
 	public abstract void push(Integer toPush);
 	
-	public abstract Integer pop();
+	public abstract int pop();
 	
 	public abstract int clear();
 	
