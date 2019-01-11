@@ -10,6 +10,9 @@ cache:
 
 build:
   stage: build
+  before_script:
+    - apt-get update
+    - apt-get install -y openjfx
   script:
     - mvn $MAVEN_CLI_OPTS compile
 
@@ -18,5 +21,8 @@ test:
   only:
     - victor
     - master
+  before_script:
+    - apt-get update
+    - apt-get install -y openjfx
   script:
     - mvn $MAVEN_CLI_OPTS test

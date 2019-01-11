@@ -18,15 +18,12 @@ public class NumberTable extends TableView<Integer>{
 	public NumberTable(ObservableList<Integer> data){
 		super();
 		
-		int colCount = 1;
-		int padding = 2;
-		
-		TableColumn<Integer, Number> columnID = new TableColumn<>("Number");
-		columnID.setCellValueFactory(value -> new SimpleIntegerProperty(value.getValue()));
-		columnID.prefWidthProperty().bind(widthProperty().subtract(padding).divide(colCount));
+		TableColumn<Integer, Number> columnNumber = new TableColumn<>("Number");
+		columnNumber.setCellValueFactory(value -> new SimpleIntegerProperty(value.getValue()));
+		columnNumber.setSortable(false);
 		
 		//noinspection unchecked
-		getColumns().addAll(columnID);
+		getColumns().addAll(columnNumber);
 		
 		this.setItems(data);
 	}
