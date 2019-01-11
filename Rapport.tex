@@ -1,0 +1,79 @@
+\documentclass{report}
+\usepackage{MCC}
+
+\def\footauthor{Thomas COUCHOUD \& Victor COLEAU}
+\title{Conduite de tests et qualité}
+\author{Thomas COUCHOUD\\\texttt{thomas.couchoud@etu.univ-tours.fr}\\Victor COLEAU\\\texttt{victor.coleau@etu.univ-tours.fr}}
+
+\rowcolors{1}{white}{white}
+\begin{document}
+	\mccTitle
+
+	\chapter{Gitlab}
+		\section{Scénario 1 avec bouchons}
+			\href{https://gitlab.com/MrCraftCod/conduitedetests/commit/5636df0ebce42614784c82e3efece3b0b1619001}{Commit 5636df0ebce42614784c82e3efece3b0b1619001}
+			
+			Etant donné que nous étions parti dans la mauvaise direction avec des tests unitaires, nous avions une grosse partie de déjà codé, notamment la pile.
+			
+			Le commit cité plus haut implémente le premier test fonctionnel << FunctionnalKeyboardConsole >>.
+			Nous avons pu ajouter quelques bouchons:
+			\begin{easylist}
+				@ ViewBottomPile
+				@ ViewInputPile
+				@ ViewTopPile
+				@ Pile (le peu qu'il reste):
+				@@ notifyObservers
+				@@ peek
+			\end{easylist}
+
+			Le code ne compile pas car certains constructeurs ne sont pas bons, mais nous avons fixé ça par la suite.
+			Cependant avec les constructeurs intégrés, les tests ne passent pas, mais le corps du code est présent.
+			
+			\img{C1.png}{Tests une fois le code fixé}{}
+			
+			Comme on peut le voir sur l'image le code peut être lancé, cependant le test bloque sur la première instruction car après un push, rien n'est affiché dans la console.
+			
+		\section{Etape 2}
+			Une fois le premier scénario complété, nous avons rajouté un test fonctionnel très proche du premier mais qui cette fois-ci utilise un autre observer (top pile).
+			Le commit est disponible \href{https://gitlab.com/MrCraftCod/conduitedetests/commit/5d63a2e3a8d360577cf3c889b28c2f8fdbfb6765}{ici}.
+			
+			\img{C2.png}{Tests à cette étape}{}
+			
+		\section{UI}
+			\href{https://gitlab.com/MrCraftCod/conduitedetests/commit/ba863b4bd56417faadcdba22ef20eaef2a78cba1}{Commit}
+		
+			Nous nous sommes par la suite intéressé à la partie UI.
+			Cette fois-ci, nous avons réalisé les tests fonctionnels en premier.
+			Nous avons donc mis des bouchons dans les nouvelles classes correspondantes:
+			\begin{easylist}
+				@ ViewInputPile
+				@ ViewBottomPileUI
+			\end{easylist}
+			
+			\img{C3.png}{Tests}{}
+			
+			Encore une fois les tests ne passent pas, mais cela est normal.
+			(C'est à ce moment là que gitlab ci fail tout le temps à cause des nouvelles classes de javafx).
+			
+			Nous avons donc par suite implémenté les différentes classes afin de valider les tests.
+			En même temps nous avons enrichi les tests fonctionnels en testant avec un observer différent bouchonné (copié collé de l'autre observer): \href{https://gitlab.com/MrCraftCod/conduitedetests/commit/0f9b8a439066373ea5623b0e879605113b1d7466}{commit}.
+			
+			Enfin nous avons terminé de faire passer les tests au vert (\href{https://gitlab.com/MrCraftCod/conduitedetests/commit/a7772a6276237ef56cd9f565a98b1f1c377e7b72}{commit}).
+			
+			\img{C5.png}{Tests}{}
+		
+		\section{Gitlab CI}
+			Nous avons mis en place le CI dès le départ afin de build le code puis lancer les tests.
+			Pour cela nous avons fait un ficher .gitlab-ci.yml.
+			Il se base sur l'image docker comprenant Java JDK 8 et maven.
+			Ce dernier comprends deux jobs:
+			\begin{easylist}
+				@ build: fait parti du group build et permet de compiler le code grâce à maven
+				@ test: fait parti du groupe test (et donc dépend de build) et permet de lancer les tests grâce à maven.
+			\end{easylist}
+			
+			Cela nous permet ainsi d'avoir un retour rapide sur l'état du code après chaque commit.
+			
+			Cependant vers la fin du projet de nombreux build ont fail car l'image docker \href{https://gitlab.com/MrCraftCod/conduitedetests/commit/6b5ea1dc8aaa866efded8a992ad19aa621aaa92f}{ne contenait pas les packages pour javafx}.
+
+\end{document}
